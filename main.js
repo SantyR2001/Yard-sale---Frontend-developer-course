@@ -4,6 +4,7 @@ const iconMenu = document.querySelector(".menu");
 const mobileMenu = document.querySelector(".mobile-menu");
 const aside = document.querySelector(".product-detail");
 const cartMenu = document.querySelector(".navbar-shopping-cart");
+const cardsContainer = document.querySelector(".cards-container");
 
 navEmail.addEventListener("click", toggleDesktopShow);
 iconMenu.addEventListener("click", toggleMobileShow);
@@ -47,4 +48,52 @@ function toggleMobileShow() {
     aside.classList.toggle("inactive");
     mobileMenu.classList.toggle("inactive");
   }
+}
+
+const productList = [];
+productList.push({
+  name: "Bike",
+  price: 120,
+  image: "./logos/pexels-photo-276517.jpeg",
+});
+productList.push({
+  name: "Pantalla",
+  price: 220,
+  image: "./logos/pexels-photo-276517.jpeg",
+});
+productList.push({
+  name: "Computadora",
+  price: 350,
+  image: "./logos/pexels-photo-276517.jpeg",
+});
+
+for (product of productList) {
+  const productCard = document.createElement("div");
+  productCard.classList.add("product-card");
+
+  const productImg = document.createElement("img");
+  productImg.setAttribute("src", product.image);
+
+  const productInfo = document.createElement("div");
+  productInfo.classList.add("product-info");
+
+  const productInfoDiv = document.createElement("div");
+
+  const productInfoFigure = document.createElement("figure");
+
+  const productPrice = document.createElement("p");
+  productPrice.innerText = "$" + product.price;
+
+  const productName = document.createElement("p");
+  productName.innerText = product.name;
+
+  const productImgCart = document.createElement("img");
+  productImgCart.setAttribute("src", "./iconos/bt_add_to_cart.svg");
+
+  productInfoFigure.appendChild(productImgCart);
+  productInfoDiv.append(productPrice, productName);
+  productInfo.append(productInfoDiv, productInfoFigure);
+  productCard.append(productImg, productInfo);
+
+  cardsContainer.appendChild(productCard);
 }
