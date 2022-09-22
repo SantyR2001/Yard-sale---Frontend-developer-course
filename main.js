@@ -2,7 +2,7 @@ const navEmail = document.querySelector(".navbar-email");
 const desktopMenu = document.querySelector(".desktop-menu");
 const iconMenu = document.querySelector(".menu");
 const mobileMenu = document.querySelector(".mobile-menu");
-const aside = document.querySelector(".product-detail");
+const aside = document.querySelector("#shoppingCart");
 const cartMenu = document.querySelector(".navbar-shopping-cart");
 const cardsContainer = document.querySelector(".cards-container");
 
@@ -75,7 +75,7 @@ for (product of productList) {
   productImg.setAttribute("src", product.image);
 
   const productInfo = document.createElement("div");
-  productInfo.classList.add("product-info");
+  productInfo.classList.add("product-card-info");
 
   const productInfoDiv = document.createElement("div");
 
