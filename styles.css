@@ -341,7 +341,7 @@ nav {
 
 /* Cards container */
 .cards-container {
-  margin-top: 3px;
+  margin-top: 24px;
   display: grid;
   grid-template-columns: repeat(auto-fill, 240px);
   gap: 26px;

@@ -1,52 +1,82 @@
+// All element selectors
 const navEmail = document.querySelector(".navbar-email");
 const desktopMenu = document.querySelector(".desktop-menu");
 const iconMenu = document.querySelector(".menu");
 const mobileMenu = document.querySelector(".mobile-menu");
-const aside = document.querySelector("#shoppingCart");
+const shoppingCart = document.querySelector("#shoppingCart");
 const cartMenu = document.querySelector(".navbar-shopping-cart");
 const cardsContainer = document.querySelector(".cards-container");
+const productDetail = document.querySelector("#productDetail");
+const closeProductDetailIcon = document.querySelector(".product-detail-close");
 
-navEmail.addEventListener("click", toggleDesktopShow);
-iconMenu.addEventListener("click", toggleMobileShow);
-cartMenu.addEventListener("click", toggleCartShow);
+//Event listeners
+navEmail.addEventListener("click", (e) =>
+  toggleShowElements(e.target.classList[0])
+);
+iconMenu.addEventListener("click", (e) =>
+  toggleShowElements(e.target.classList[0])
+);
+cartMenu.addEventListener("click", (e) =>
+  toggleShowElements(e.target.classList[0])
+);
+closeProductDetailIcon.addEventListener("click", (e) =>
+  productDetail.classList.add("inactive")
+);
 
-function toggleDesktopShow() {
-  const isAsideClosed = aside.classList.contains("inactive");
+//Select the element to show
+function toggleShowElements(element) {
+  let e;
+  switch (element) {
+    case "product-img":
+      e = productDetail;
+      break;
+    case "navbar-email":
+      e = desktopMenu;
+      break;
+    case "menu":
+      e = mobileMenu;
+      break;
+    case "img-shopping-cart":
+      e = shoppingCart;
+      break;
+    default:
+      break;
+  }
+  toggleShow(e);
+}
 
-  if (isAsideClosed) {
-    desktopMenu.classList.toggle("inactive");
-    return;
+//Check if all elements are closed
+function allElementsAreInactive() {
+  if (
+    shoppingCart.classList.contains("inactive") &&
+    mobileMenu.classList.contains("inactive") &&
+    desktopMenu.classList.contains("inactive") &&
+    productDetail.classList.contains("inactive")
+  ) {
+    return true;
   } else {
-    aside.classList.toggle("inactive");
-    desktopMenu.classList.toggle("inactive");
+    return false;
   }
 }
 
-function toggleCartShow() {
-  const isMobileMenuClosed = mobileMenu.classList.contains("inactive");
-  const isDesktopMenuClosed = desktopMenu.classList.contains("inactive");
-
-  //if mobile menu and desktop menu are closed, only show the aside. else toggle elements
-  if (isMobileMenuClosed && isDesktopMenuClosed) {
-    aside.classList.toggle("inactive");
-    return;
-  } else {
-    mobileMenu.classList.add("inactive");
-    desktopMenu.classList.add("inactive");
-    aside.classList.toggle("inactive");
-  }
+function closeAllElements() {
+  mobileMenu.classList.add("inactive");
+  desktopMenu.classList.add("inactive");
+  shoppingCart.classList.add("inactive");
+  productDetail.classList.add("inactive");
 }
 
-function toggleMobileShow() {
-  const isAsideClosed = aside.classList.contains("inactive");
-
-  //if aside is closed, only show the aside. else toggle both elements
-  if (isAsideClosed) {
-    mobileMenu.classList.toggle("inactive");
+//Shows the element we passed to it and closes the others if necessary
+function toggleShow(e) {
+  if (!e.classList.contains("inactive")) {
+    e.classList.add("inactive");
     return;
+  }
+  if (!allElementsAreInactive()) {
+    closeAllElements();
+    e.classList.remove("inactive");
   } else {
-    aside.classList.toggle("inactive");
-    mobileMenu.classList.toggle("inactive");
+    e.classList.toggle("inactive");
   }
 }
 
@@ -73,6 +103,10 @@ for (product of productList) {
 
   const productImg = document.createElement("img");
   productImg.setAttribute("src", product.image);
+  productImg.classList.add("product-img");
+  productImg.addEventListener("click", (e) =>
+    toggleShowElements(e.target.classList[0])
+  );
 
   const productInfo = document.createElement("div");
   productInfo.classList.add("product-card-info");
