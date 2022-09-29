@@ -221,6 +221,13 @@ nav {
   flex-direction: column;
 }
 
+.order-content {
+  margin: 16px 0;
+  overflow-x: hidden;
+  max-height: 55vh;
+  overflow-y: scroll;
+}
+
 .order {
   display: grid;
   grid-template-columns: auto 1fr;
