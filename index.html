@@ -59,7 +59,7 @@
                 </li>
                 <li class="navbar-shopping-cart">
                     <img class="img-shopping-cart" src="./iconos/icon_shopping_cart.svg" alt="shopping-cart">
-                    <div>2</div>
+                    <div id="quantityBadge"></div>
                 </li>
             </ul>
         </div>
@@ -135,46 +135,20 @@
         <div class="title-container">
             <img src="./iconos/flechita.svg" />
             <p class="title">
-                Shopping cart
+                My order
             </p>
         </div>
+        <div class="order-content">
 
+        </div>
         <div class="my-order-content">
-            <div class="shopping-cart">
-                <figure>
-                    <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                        alt="bike">
-                </figure>
-                <p>Bike</p>
-                <p>$30,00</p>
-                <img src="./iconos/icon_close.png" alt="close" />
-            </div>
-            <div class="shopping-cart">
-                <figure>
-                    <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                        alt="bike">
-                </figure>
-                <p>Bike</p>
-                <p>$30,00</p>
-                <img src="./iconos/icon_close.png" alt="close" />
-            </div>
-            <div class="shopping-cart">
-                <figure>
-                    <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                        alt="bike">
-                </figure>
-                <p>Bike</p>
-                <p>$30,00</p>
-                <img src="./iconos/icon_close.png" alt="close" />
-            </div>
             <div class="order">
                 <p>
                     <span>
                         Total
                     </span>
                 </p>
-                <p>
-                    $560.00
+                <p id="orderPrice">
                 </p>
             </div>
             <button class="primary-button">
@@ -187,16 +161,16 @@
         <div class="product-detail-close">
             <img class="close-product-detail-icon" src="./iconos/icon_close.png" alt="close">
         </div>
-        <img src="./logos/pexels-photo-276517.jpeg" alt="bike">
+        <img id="productImg" src="./logos/pexels-photo-276517.jpeg" alt="bike">
         <div class="product-info">
-            <p>
-                $35,00
+            <p id="productPrice">
+
             </p>
-            <p>
-                Bike
+            <p id="productName">
+
             </p>
-            <p>
-                With its practical bike, you can drive so fast maaaan!!!
+            <p id="productDesc">
+
             </p>
             <button class="primary-button add-to-cart-btn">
                 <img src="./iconos/bt_add_to_cart.svg" alt="Add to cart">
